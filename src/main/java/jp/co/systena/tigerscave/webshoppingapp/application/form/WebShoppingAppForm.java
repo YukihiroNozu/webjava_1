@@ -18,6 +18,10 @@ public class WebShoppingAppForm{
      * 値段
      */
     private int price;
+    /*
+     * 商品名
+     */
+    private String customerName;
 
     /*
      *以下、Getter,Setter
@@ -53,5 +57,14 @@ public class WebShoppingAppForm{
     public void setPrice(int price) {
       this.price = price;
     }
+
+    public String getCustomerName() {
+      return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+      this.customerName = customerName;
+    }
+
 
 }
