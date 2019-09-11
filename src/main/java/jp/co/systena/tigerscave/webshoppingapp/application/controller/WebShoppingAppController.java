@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import jp.co.systena.tigerscave.webshoppingapp.application.service.WebShoppingAppService;
 
 @Controller // Viewあり。Viewを返却するアノテーション
@@ -48,7 +49,7 @@ public class WebShoppingAppController extends WebShoppingAppService{
     model.addAttribute("num", totalNum);
 //    model.addAttribute("name", nameList);
     model.addAttribute("price", totalPrice);
-    model.addAttribute("customerName", "ゲスト");
+    model.addAttribute("customerName", customerName);
 
     // Viewのテンプレート名を返す
     return "home";
@@ -69,7 +70,7 @@ public class WebShoppingAppController extends WebShoppingAppService{
     model.addAttribute("num", totalNum);
 //    model.addAttribute("name", nameList);
     model.addAttribute("price", totalPrice);
-    model.addAttribute("customerName", "ゲスト");
+    model.addAttribute("customerName", customerName);
 
     // Viewのテンプレート名を返す
     return "home";
@@ -84,7 +85,31 @@ public class WebShoppingAppController extends WebShoppingAppService{
  // Viewに渡すデータを設定
     model.addAttribute("num", totalNum);
     model.addAttribute("price", totalPrice);
-    model.addAttribute("customerName", "ゲスト");
+    model.addAttribute("customerName", customerName);
+
+    // Viewのテンプレート名を返す
+    return "home";
+  }
+
+  @RequestMapping("/login") // URLとのマッピング
+  public String login(HttpSession session, Model model){
+
+ // Viewに渡すデータを設定
+    model.addAttribute("num", totalNum);
+    model.addAttribute("price", totalPrice);
+    model.addAttribute("customerName", customerName);
+
+    // Viewのテンプレート名を返す
+    return "login";
+  }
+
+  @RequestMapping("/login_home") // URLとのマッピング
+  public String index(HttpSession session, Model model,@RequestParam(name = "loginName", required = false) String loginName) {
+
+ // Viewに渡すデータを設定
+    model.addAttribute("num", totalNum);
+    model.addAttribute("price", totalPrice);
+    model.addAttribute("customerName", loginName);
 
     // Viewのテンプレート名を返す
     return "home";
